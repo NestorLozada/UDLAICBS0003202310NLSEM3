@@ -1,0 +1,6 @@
+"CHANNEL_ID","CHANNEL_DESC","CHANNEL_CLASS","CHANNEL_CLASS_ID"
+3,"Direct Sales","Direct",12
+9,"Tele Sales","Direct",12
+5,"Catalog","Indirect",13
+4,"Internet","Indirect",13
+2,"Partners","Others",14
