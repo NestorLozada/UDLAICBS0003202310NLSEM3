@@ -12,7 +12,7 @@ def extract_channels(db_con: Engine):
     }
     channels_csv = pd.read_csv(DataConfig.get_csv_path('channels.csv'))
     
-    #Process CSV Content
+    #recolecta la informcion de los csv
     if not channels_csv.empty:
         for id,desc,cls,cls_id \
             in zip(
