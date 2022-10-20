@@ -2,7 +2,7 @@ import os
 from jproperties import Properties
 
 # route for the connections
-from util.db_connection import DbConnection
+from util.db_connection import Db_Connection
 ##variable for reading the configurations for the data base
 # this gets the data form databaseconf and route
 def read_config(file_path: str):

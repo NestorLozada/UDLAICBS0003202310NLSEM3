@@ -1,6 +1,6 @@
 import functools
 import traceback
-from util.db_connection import DbConnection
+from util.db_connection import Db_Connection
 from config import DbConfig
 
 def simple_try(schema: str):
@@ -9,7 +9,7 @@ def simple_try(schema: str):
         @functools.wraps(func)
         def wrapper(*args, **kwargs):
             try:
-                con_db = DbConnection(
+                con_db = Db_Connection(
                     type=db_type,
                     host=DbConfig.HOST,
                     port=DbConfig.PORT,

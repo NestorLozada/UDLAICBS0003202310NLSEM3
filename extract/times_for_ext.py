@@ -1,7 +1,7 @@
 import pandas as pd
 from sqlalchemy.engine import Engine
 from config import DataConfig, DbConfig
-from util.db_simpleConnection import simple_connection
+from util.db_simpleConnection import simple_try
 
 def extract_times(db_con: Engine):
     #Dictionary for values
