@@ -1,6 +1,6 @@
 import functools
 import traceback
-from utilsconnection.db_connection import DbConnection
+from util.db_connection import DbConnection
 from config import DbConfig
 
 def simple_try(schema: str):
