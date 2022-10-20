@@ -3,7 +3,7 @@ import traceback
 from utilsconnection.db_connection import DbConnection
 from config import DbConfig
 
-def connection_handler(schema: str):
+def simple_try(schema: str):
     db_type = "mysql"
     def decorator(func):
         @functools.wraps(func)

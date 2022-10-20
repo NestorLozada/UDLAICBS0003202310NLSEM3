@@ -3,7 +3,11 @@ from sqlalchemy.engine import Engine
 from config import DataConfig
 
 def extract_channels(db_con: Engine):
-    #Dictionary for values
+    #getting the data for the exytactions for:
+    #"channel_id,
+    #"channel_desc",
+    #"channel_class",
+    #"channel_class_id"
     channels_dict = {
         "channel_id": [],
         "channel_desc": [],

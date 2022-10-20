@@ -1,17 +1,19 @@
 import os
 from jproperties import Properties
 
-from utilsconnection.db_connection import Db_Connection
-
-def __read_config(file_path: str):
+# route for the connections
+from utilsconnection.db_connection import DbConnection
+##variable for reading the configurations for the data base
+# this gets the data form databaseconf and route
+def read_config(file_path: str):
     data_configs = Properties()
     with open(file_path, 'rb') as config_file:
         data_configs.load(config_file)
     data_dict = { key : str(data_configs.get(key).data) for key in data_configs }
     return data_dict
 
-db_config = __read_config('./config/databaseconfig.properties')
-data_config = __read_config('./config/route.properties')
+db_config = read_config('./config/databaseconfig.properties')
+data_config = read_config('./config/route.properties')
 
 class DbConfig:
     HOST = db_config['DataBase_HOST']
