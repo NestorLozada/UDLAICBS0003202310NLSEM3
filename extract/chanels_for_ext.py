@@ -3,11 +3,7 @@ from sqlalchemy.engine import Engine
 from config import DataConfig
 
 def extract_channels(db_con: Engine):
-    #getting the data for the exytactions for:
-    #"channel_id,
-    #"channel_desc",
-    #"channel_class",
-    #"channel_class_id"
+    #Dictionary for values
     channels_dict = {
         "channel_id": [],
         "channel_desc": [],
@@ -16,7 +12,7 @@ def extract_channels(db_con: Engine):
     }
     channels_csv = pd.read_csv(DataConfig.get_csv_path('channels.csv'))
     
-    #recolecta la informcion de los csv
+    #Process CSV Content
     if not channels_csv.empty:
         for id,desc,cls,cls_id \
             in zip(

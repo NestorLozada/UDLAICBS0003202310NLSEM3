@@ -2,7 +2,6 @@ import pandas as pd
 from sqlalchemy.engine import Engine
 from config import DataConfig
 
-
 def extract_products(db_con: Engine):
     #Dictionary for values
     products_dict = {
@@ -54,3 +53,4 @@ def extract_products(db_con: Engine):
         db_con.connect().execute(f'TRUNCATE TABLE products')
         df_products = pd.DataFrame(products_dict)
         df_products.to_sql('products', db_con, if_exists="append",index=False)
+    
