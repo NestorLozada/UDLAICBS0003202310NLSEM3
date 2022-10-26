@@ -5,21 +5,21 @@ from config import DataConfig
 def extract_customers(db_con: Engine):
     #Dictionary for values
     customers_dict = {
-        "cust_id": [],
-        "cust_first_name": [],
-        "cust_last_name": [],
-        "cust_gender": [],
-        "cust_year_of_birth": [],
-        "cust_marital_status": [],
-        "cust_street_address": [],
-        "cust_postal_code": [],
-        "cust_city": [],
-        "cust_state_province": [],
-        "country_id": [],
-        "cust_main_phone_integer": [],
-        "cust_income_level": [],
-        "cust_credit_limit": [],
-        "cust_email": [],
+        "CUST_ID": [],
+        "CUST_FIRST_NAME": [],
+        "CUST_LAST_NAME": [],
+        "CUST_GENDER": [],
+        "CUST_YEAR_OF_BIRTH": [],
+        "CUST_MARITAL_STATUS": [],
+        "CUST_STREET_ADDRESS": [],
+        "CUST_POSTAL_CODE": [],
+        "CUST_CITY": [],
+        "CUST_STATE_PROVINCE": [],
+        "COUNTRY_ID": [],
+        "CUST_MAIN_PHONE_INTEGER": [],
+        "CUST_INCOME_LEVEL": [],
+        "CUST_CREDIT_LIMIT": [],
+        "CUST_EMAIL": [],
     }
     customers_csv = pd.read_csv(DataConfig.get_csv_path('customers.csv'))
     
@@ -48,22 +48,22 @@ def extract_customers(db_con: Engine):
                 customers_csv['CUST_CREDIT_LIMIT'],
                 customers_csv['CUST_EMAIL']
             ):
-            customers_dict["cust_id"].append(id)
-            customers_dict["cust_first_name"].append(first_name)
-            customers_dict["cust_last_name"].append(last_name)
-            customers_dict["cust_gender"].append(gender)
-            customers_dict["cust_year_of_birth"].append(birth)
-            customers_dict["cust_marital_status"].append(marital_status)
-            customers_dict["cust_street_address"].append(street_address)
-            customers_dict["cust_postal_code"].append(postal_code)
-            customers_dict["cust_city"].append(city)
-            customers_dict["cust_state_province"].append(state_province)
-            customers_dict["country_id"].append(country_id)
-            customers_dict["cust_main_phone_integer"].append(main_phone)
-            customers_dict["cust_income_level"].append(income_level)
-            customers_dict["cust_credit_limit"].append(credit_limit)
-            customers_dict["cust_email"].append(email)
-    if customers_dict["cust_id"]:
-        db_con.connect().execute(f'TRUNCATE TABLE customers')
+            customers_dict["CUST_ID"].append(id)
+            customers_dict["CUST_FIRST_NAME"].append(first_name)
+            customers_dict["CUST_LAST_NAME"].append(last_name)
+            customers_dict["CUST_GENDER"].append(gender)
+            customers_dict["CUST_YEAR_OF_BIRTH"].append(birth)
+            customers_dict["CUST_MARITAL_STATUS"].append(marital_status)
+            customers_dict["CUST_STREET_ADDRESS"].append(street_address)
+            customers_dict["CUST_POSTAL_CODE"].append(postal_code)
+            customers_dict["CUST_CITY"].append(city)
+            customers_dict["CUST_STATE_PROVINCE"].append(state_province)
+            customers_dict["COUNTRY_ID"].append(country_id)
+            customers_dict["CUST_MAIN_PHONE_INTEGER"].append(main_phone)
+            customers_dict["CUST_INCOME_LEVEL"].append(income_level)
+            customers_dict["CUST_CREDIT_LIMIT"].append(credit_limit)
+            customers_dict["CUST_EMAIL"].append(email)
+    if customers_dict["CUST_ID"]:
+        db_con.connect().execute(f'TRUNCATE TABLE CUSTOMERS_EXT')
         df_customers = pd.DataFrame(customers_dict)
-        df_customers.to_sql('customers', db_con, if_exists="append",index=False)
+        df_customers.to_sql('CUSTOMERS_EXT', db_con, if_exists="append",index=False)

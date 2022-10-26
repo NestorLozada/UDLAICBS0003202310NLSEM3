@@ -5,10 +5,10 @@ from config import DataConfig
 def extract_countries(db_con: Engine):
     #Dictionary for values
     countries_dict = {
-        "country_id": [],
-        "country_name": [],
-        "country_region": [],
-        "country_region_id": []
+        "COUNTRY_ID": [],
+        "COUNTRY_NAME": [],
+        "COUNTRY_REGION": [],
+        "COUNTRY_REGION_ID": []
     }
     countries_csv = pd.read_csv(DataConfig.get_csv_path('countries.csv'))
     
@@ -21,11 +21,11 @@ def extract_countries(db_con: Engine):
                 countries_csv['COUNTRY_REGION'],
                 countries_csv['COUNTRY_REGION_ID']
             ):
-            countries_dict["country_id"].append(id)
-            countries_dict["country_name"].append(name)
-            countries_dict["country_region"].append(reg)
-            countries_dict["country_region_id"].append(reg_id)
-    if countries_dict["country_id"]:
-        db_con.connect().execute(f'TRUNCATE TABLE countries')
+            countries_dict["COUNTRY_ID"].append(id)
+            countries_dict["COUNTRY_NAME"].append(name)
+            countries_dict["COUNTRY_REGION"].append(reg)
+            countries_dict["COUNTRY_REGION_ID"].append(reg_id)
+    if countries_dict["COUNTRY_ID"]:
+        db_con.connect().execute(f'TRUNCATE TABLE COUNTRIES_EXT')
         df_countries = pd.DataFrame(countries_dict)
-        df_countries.to_sql('countries', db_con, if_exists="append",index=False)
+        df_countries.to_sql('COUNTRIES_EXT', db_con, if_exists="append",index=False)

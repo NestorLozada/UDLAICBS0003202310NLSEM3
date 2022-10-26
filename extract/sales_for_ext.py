@@ -5,13 +5,13 @@ from config import DataConfig
 def extract_sales(db_con: Engine):
     #Dictionary for values
     sales_dict = {
-        "prod_id": [],
-        "cust_id": [],
-        "time_id": [],
-        "channel_id": [],
-        "promo_id": [],
-        "quantity_sold": [],
-        "amount_sold": [],
+        "PROD_ID": [],
+        "CUST_ID": [],
+        "TIME_ID": [],
+        "CHANNEL_ID": [],
+        "PROMO_ID": [],
+        "QUANTITY_SOLD": [],
+        "AMOUNT_SOLD": [],
     }
     sales_csv = pd.read_csv(DataConfig.get_csv_path('sales.csv'))
     
@@ -29,14 +29,14 @@ def extract_sales(db_con: Engine):
                 sales_csv['QUANTITY_SOLD'],
                 sales_csv['AMOUNT_SOLD']
             ):
-            sales_dict['prod_id'].append(prod_id)
-            sales_dict['cust_id'].append(cust_id)
-            sales_dict['time_id'].append(time_id)
-            sales_dict['channel_id'].append(channel_id)
-            sales_dict['promo_id'].append(promo_id)
-            sales_dict['quantity_sold'].append(quantity_sold)
-            sales_dict['amount_sold'].append(amount_sold)
-    if sales_dict["prod_id"]:
-        db_con.connect().execute(f'TRUNCATE TABLE sales')
+            sales_dict['PROD_ID'].append(prod_id)
+            sales_dict['CUST_ID'].append(cust_id)
+            sales_dict['TIME_ID'].append(time_id)
+            sales_dict['CHANNEL_ID'].append(channel_id)
+            sales_dict['PROMO_ID'].append(promo_id)
+            sales_dict['QUANTITY_SOLD'].append(quantity_sold)
+            sales_dict['AMOUNT_SOLD'].append(amount_sold)
+    if sales_dict["PROD_ID"]:
+        db_con.connect().execute(f'TRUNCATE TABLE SALES_EXT')
         df_sales = pd.DataFrame(sales_dict)
-        df_sales.to_sql('sales', db_con, if_exists="append",index=False)
+        df_sales.to_sql('SALES_EXT', db_con, if_exists="append",index=False)

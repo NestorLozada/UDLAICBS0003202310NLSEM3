@@ -2,14 +2,15 @@ import pandas as pd
 from sqlalchemy.engine import Engine
 from config import DataConfig
 
+
 def extract_promotions(db_con: Engine):
     #Dictionary for values
     promotions_dict = {
-        "promo_id": [],
-        "promo_name": [],
-        "promo_cost": [],
-        "promo_begin_date": [],
-        "promo_end_date": [],
+        "PROMO_ID": [],
+        "PROMO_NAME": [],
+        "PROMO_COST": [],
+        "PROMO_BEGIN_DATE": [],
+        "PROMO_END_DATE": [],
     }
     promotions_csv = pd.read_csv(DataConfig.get_csv_path('promotions.csv'))
     
@@ -24,12 +25,12 @@ def extract_promotions(db_con: Engine):
                 promotions_csv['PROMO_BEGIN_DATE'],
                 promotions_csv['PROMO_END_DATE']
             ):
-            promotions_dict["promo_id"].append(id)
-            promotions_dict["promo_name"].append(name)
-            promotions_dict["promo_cost"].append(cost)
-            promotions_dict["promo_begin_date"].append(begin_date)
-            promotions_dict["promo_end_date"].append(end_date)
-    if promotions_dict["promo_id"]:
-        db_con.connect().execute(f'TRUNCATE TABLE promotions')
+            promotions_dict["PROMO_ID"].append(id)
+            promotions_dict["PROMO_NAME"].append(name)
+            promotions_dict["PROMO_COST"].append(cost)
+            promotions_dict["PROMO_BEGIN_DATE"].append(begin_date)
+            promotions_dict["PROMO_END_DATE"].append(end_date)
+    if promotions_dict["PROMO_ID"]:
+        db_con.connect().execute(f'TRUNCATE TABLE PROMOTIONS_EXT')
         df_promotions = pd.DataFrame(promotions_dict)
-        df_promotions.to_sql('promotions', db_con, if_exists="append",index=False)
+        df_promotions.to_sql('PROMOTIONS_EXT', db_con, if_exists="append",index=False)
