@@ -37,4 +37,4 @@ def transform_customers(db_con: Engine, etl_process_id: int) -> None:
         # Add ETL process ID
         df_customers['ETL_PROC_ID'] = etl_process_id
         # Write to transform table
-        df_customers.to_sql('CUSTOMERS_TRA', con=db_con, if_exists='append',index=False)
+        df_customers.to_sql('customers_tra', con=db_con, if_exists='append',index=False)

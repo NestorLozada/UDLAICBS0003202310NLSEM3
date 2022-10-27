@@ -4,6 +4,7 @@ import traceback
 class DbConnection():
     """
     Class to manage database connections
+
     Attributes
     ----------
         connection : SQLAlchemy Engine
@@ -20,6 +21,7 @@ class DbConnection():
             database password
         database : str, required
             name of the database
+
     Methods
     -------
     start(self):
@@ -30,6 +32,7 @@ class DbConnection():
 
     def __init__(self, type, host, port, user, password, database):        
         """Constructor with initialization values for the class attributes
+
         Parameters
         ----------
         type : str, required
@@ -44,9 +47,11 @@ class DbConnection():
             value for the password attribute
         database : str, required
             value for the database attribute
+
         Returns
         -------
         None
+
         Raises
         ------
         None
@@ -61,6 +66,7 @@ class DbConnection():
 
     def start(self):
         """Create and returns a database connection.
+
         Parameters
         ----------
         None      
@@ -69,6 +75,7 @@ class DbConnection():
         -------
         SQLAlchemy Engine
             database connection pool
+
         Raises
         ------
         None
@@ -86,6 +93,7 @@ class DbConnection():
 
     def stop(self):
         """Dispose the database connection pool.
+
         Parameters
         ----------
         None     
@@ -93,6 +101,7 @@ class DbConnection():
         Returns
         -------
         None
+
         Raises
         ------
         None

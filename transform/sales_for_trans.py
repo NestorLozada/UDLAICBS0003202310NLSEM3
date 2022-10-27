@@ -33,4 +33,4 @@ def transform_sales(db_con: Engine, etl_process_id: int) -> None:
         # Add ETL process ID
         df_sales['ETL_PROC_ID'] = etl_process_id
         # Write to transform table
-        df_sales.to_sql('SALES_TRA', con=db_con, if_exists='append',index=False)
+        df_sales.to_sql('sales_tra', con=db_con, if_exists='append',index=False)

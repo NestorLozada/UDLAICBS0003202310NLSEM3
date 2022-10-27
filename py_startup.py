@@ -22,5 +22,5 @@ def main(schema_con: SchemaConnection):
 try:
     main()
 except:
-    print("HUBO UN ERROR MIENTRAS SE EJECTUABA EL PROCESO ETL:")
+    print("An error occurred while running the ETL process:")
     traceback.print_exc()

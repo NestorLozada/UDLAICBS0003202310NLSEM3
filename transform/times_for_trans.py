@@ -38,4 +38,4 @@ def transform_times(db_con: Engine, etl_process_id: int) -> None:
         # Add ETL process ID
         df_times['ETL_PROC_ID'] = etl_process_id
         # Write to transform table
-        df_times.to_sql('TIMES_TRA', con=db_con, if_exists='append',index=False)
+        df_times.to_sql('times_tra', con=db_con, if_exists='append',index=False)

@@ -28,4 +28,4 @@ def transform_promotions(db_con: Engine, etl_process_id: int) -> None:
         # Add ETL process ID
         df_promotions['ETL_PROC_ID'] = etl_process_id
         # Write to transform table
-        df_promotions.to_sql('PROMOTIONS_TRA', con=db_con, if_exists='append',index=False)
+        df_promotions.to_sql('promotions_tra', con=db_con, if_exists='append',index=False)

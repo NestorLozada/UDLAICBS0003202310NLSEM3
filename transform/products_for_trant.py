@@ -35,4 +35,4 @@ def transform_products(db_con: Engine, etl_process_id: int) -> None:
         # Add ETL process ID
         df_products['ETL_PROC_ID'] = etl_process_id
         # Write to transform table
-        df_products.to_sql('PRODUCTS_TRA', con=db_con, if_exists='append',index=False)
+        df_products.to_sql('products_tra', con=db_con, if_exists='append',index=False)

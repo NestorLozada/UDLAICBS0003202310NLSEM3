@@ -1,5 +1,4 @@
 from sqlalchemy.engine import Engine
-
 from extract.chanels_for_ext import extract_channels
 from extract.countries_fir_ext import extract_countries
 from extract.customers_for_ext import extract_customers
