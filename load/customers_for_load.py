@@ -20,24 +20,24 @@ table_columns = [
 
 def load_customers(schema_con: SchemaConnection, etl_process_id: int) -> None:
     customers_tra = read_table(
-        table_name='CUSTOMERS_TRA',
+        table_name='customers_tra',
         columns=table_columns,
         con=schema_con.STG,
         with_process_id=etl_process_id
     )
     customers_sor = read_table(
-        table_name='CUSTOMERS',
+        table_name='customers',
         columns=['ID', *table_columns],
         con=schema_con.SOR
     )
     customers_with_relationships = map_relationships(
         df=customers_tra,
         con=schema_con.SOR,
-        relationships=[('COUNTRY_ID', 'COUNTRIES', 'COUNTRY_ID')]
+        relationships=[('COUNTRY_ID', 'countries', 'COUNTRY_ID')]
     )
     merge_and_insert(
         source_df=customers_with_relationships,
-        target_table='CUSTOMERS',
+        target_table='customers',
         target_df=customers_sor,
         key_columns=['CUST_ID'],
         db_con=schema_con.SOR

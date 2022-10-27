@@ -2,7 +2,7 @@ import os
 from jproperties import Properties
 
 # route for the connections
-from util.db_connection import Db_Connection
+from util.db_connection import DbConnection
 ##variable for reading the configurations for the data base
 # this gets the data form databaseconf and route
 def read_config(file_path: str):
@@ -27,5 +27,6 @@ class DbConfig:
 
 class DataConfig:
     csv_path = os.path.abspath(data_config['DATA_ROUTE'])
-    def get_csv_path(file_name: str):
+    @staticmethod
+    def get_csv_path(file_name: str) -> str:
         return os.path.join(DataConfig.csv_path, file_name)

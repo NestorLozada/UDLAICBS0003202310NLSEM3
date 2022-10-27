@@ -10,17 +10,17 @@ def main(schema_con: SchemaConnection):
     start = time.time()
     process_id = create_etl_process(schema_con.STG)
     print(f'ETL process N°{process_id}')
-    print('Extracting data...')
+    print('EXTRAYENDO INFO...')
     extract.extract(schema_con.STG)
-    print('Transforming data...')
+    print('TRANFORMANDO INFO...')
     transform.transform(schema_con.STG, process_id)
-    print('Loading data...')
+    print('CARGANDO INFO...')
     load.load(schema_con, process_id)
     end = time.time()
-    print(f'ETL process finished in {end - start:.4f} seconds')
+    print(f'ETL FINALIZÓ EN {end - start:.4f} SEGUNDOS')
 
 try:
     main()
 except:
-    print("An error occurred while running the ETL process:")
+    print("HUBO UN ERROR MIENTRAS SE EJECTUABA EL PROCESO ETL:")
     traceback.print_exc()

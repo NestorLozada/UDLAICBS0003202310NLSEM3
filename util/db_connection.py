@@ -1,10 +1,9 @@
 from sqlalchemy import create_engine
 import traceback
 
-class Db_Connection():
+class DbConnection():
     """
     Class to manage database connections
-
     Attributes
     ----------
         connection : SQLAlchemy Engine
@@ -21,7 +20,6 @@ class Db_Connection():
             database password
         database : str, required
             name of the database
-
     Methods
     -------
     start(self):
@@ -32,7 +30,6 @@ class Db_Connection():
 
     def __init__(self, type, host, port, user, password, database):        
         """Constructor with initialization values for the class attributes
-
         Parameters
         ----------
         type : str, required
@@ -47,11 +44,9 @@ class Db_Connection():
             value for the password attribute
         database : str, required
             value for the database attribute
-
         Returns
         -------
         None
-
         Raises
         ------
         None
@@ -66,7 +61,6 @@ class Db_Connection():
 
     def start(self):
         """Create and returns a database connection.
-
         Parameters
         ----------
         None      
@@ -75,7 +69,6 @@ class Db_Connection():
         -------
         SQLAlchemy Engine
             database connection pool
-
         Raises
         ------
         None
@@ -93,7 +86,6 @@ class Db_Connection():
 
     def stop(self):
         """Dispose the database connection pool.
-
         Parameters
         ----------
         None     
@@ -101,7 +93,6 @@ class Db_Connection():
         Returns
         -------
         None
-
         Raises
         ------
         None

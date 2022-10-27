@@ -16,19 +16,19 @@ table_columns = [
 
 def load_products(schema_con: SchemaConnection, etl_process_id: int) -> None:
     products_tra = read_table(
-        table_name='PRODUCTS_TRA',
+        table_name='products_tra',
         columns=table_columns,
         con=schema_con.STG,
         with_process_id=etl_process_id
     )
     products_sor = read_table(
-        table_name='PRODUCTS',
+        table_name='products',
         columns=['ID', *table_columns],
         con=schema_con.SOR
     )
     merge_and_insert(
         source_df=products_tra,
-        target_table='PRODUCTS',
+        target_table='products',
         target_df=products_sor,
         key_columns=['PROD_ID'],
         db_con=schema_con.SOR
